@@ -3,11 +3,16 @@ package _01_Custom_ArrayList;
 @SuppressWarnings("unchecked")
 
 public class ArrayList <T>{
-	
+	T[] list;
 	public ArrayList() {
+		list = (T[])new Object[0];
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
+		T[]newList = (T[])new Object[list.length + 1];
+		
+		
+		//\\//\\!!!>>| |START HERE| |<<!!!//\\//\\
 		
 		return null;
 	}
