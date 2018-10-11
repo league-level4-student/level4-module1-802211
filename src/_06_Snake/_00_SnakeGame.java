@@ -127,7 +127,6 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// if an arrow key is pressed, set the snake's
 		// direction accordingly
 		case KeyEvent.VK_UP:
-			//System.out.println("keykeykey");
 			snake.setDirection(Direction.DOWN);
 			break;
 			
