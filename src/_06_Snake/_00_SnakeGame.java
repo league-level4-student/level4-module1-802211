@@ -37,7 +37,12 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	private Location foodLocation;
 
+		
+	
 	public _00_SnakeGame() {
+		int r1 = new Random().nextInt(WIDTH);
+		int r2 = new Random().nextInt(HEIGHT);
+		foodLocation = new Location(r1, r2);
 		snake = new Snake(new Location(WIDTH / 2, HEIGHT / 2));
 
 		window = new JFrame("Snake");
@@ -50,6 +55,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 				g2.setColor(BACKGROUND_COLOR);
 				g2.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
 
 				g2.setColor(FOOD_COLOR);
 				g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
@@ -88,13 +94,13 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 		switch (input) {
 		case 0:
-			timer.setDelay(1);
+			timer.setDelay(100);
 			break;
 		case 1:
-			timer.setDelay(3);
+			timer.setDelay(300);
 			break;
 		case 2:
-			timer.setDelay(5);
+			timer.setDelay(500);
 			break;
 		}
 
@@ -121,10 +127,12 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// if an arrow key is pressed, set the snake's
 		// direction accordingly
 		case KeyEvent.VK_UP:
-			snake.setDirection(Direction.UP);
-			break;
-		case KeyEvent.VK_DOWN:
+			//System.out.println("keykeykey");
 			snake.setDirection(Direction.DOWN);
+			break;
+			
+		case KeyEvent.VK_DOWN:
+			snake.setDirection(Direction.UP);
 			break;
 		case KeyEvent.VK_LEFT:
 			snake.setDirection(Direction.LEFT);
@@ -191,7 +199,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		}
 		// 3. if the location of the head is equal to the location of the food,
 		// feed the snake and set the food location
-		if (snake.getHeadLocation() == foodLocation) {
+		if (snake.getHeadLocation().x == foodLocation.x && snake.getHeadLocation().y == foodLocation.y) {
 			snake.feed();
 			setFoodLocation();
 		}
